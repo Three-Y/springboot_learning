@@ -1,10 +1,15 @@
 package yan.ibbie.boot.config;
 
 import ch.qos.logback.core.db.DBHelper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.ImportResource;
+import yan.ibbie.boot.pojo.Car;
 import yan.ibbie.boot.pojo.Master;
 import yan.ibbie.boot.pojo.Pet;
 
@@ -26,22 +31,31 @@ import yan.ibbie.boot.pojo.Pet;
  * @Import 导入指定类型的组件，springboot会调用其无参构造器创建其实例对象放到容器中
  *         自动创建的组件的组件名是指定类型的全类名
  * @Conditional 条件装配，满足指定条件才配置组件
+ * @ImportResource 导入其它配置文件，导入后可以直接调用导入的文件中的bean
+ * @ConfigurationProperties 可从配置文件中注入bean的属性值（见Car.class）
  */
 @Import({DBHelper.class,Pet.class})
 @Configuration(proxyBeanMethods = true)
+@ImportResource("classpath:beans.xml")
+@EnableConfigurationProperties(Car.class)
 public class MyConfig {
+
+    @Bean
+    public Car car(){
+        return new Car();
+    }
 
     @Bean //声明一个bean，方法名是bean id，返回类型就是组件类型，返回值就是容器中的实例
     public Master master666(){
         return new Master();
     }
 //    @Bean
-//    @ConditionalOnBean(name = "master222") //存在名为master222的bena才创建
+//    @ConditionalOnBean(name = "master222") //存在名为master222的bean才创建
 //    public Pet pet111(){
 //        return new Pet("肥猫");
 //    }
 //    @Bean
-//    @ConditionalOnBean(name = "master666") //存在名为master666的bena才创建
+//    @ConditionalOnBean(name = "master666") //存在名为master666的bean才创建
 //    public Pet pet222(){
 //        return new Pet("肥猫");
 //    }

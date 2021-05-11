@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="kitty" class="yan.ibbie.boot.pojo.Pet">
+        <constructor-arg name="name" value="Kitty"/>
+    </bean>
+
+    <bean id="ibbie" class="yan.ibbie.boot.pojo.Master">
+        <constructor-arg name="pet" ref="kitty"/>
+        <constructor-arg name="name" value="Ibbie"/>
+    </bean>
+
+</beans>

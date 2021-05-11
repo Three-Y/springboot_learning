@@ -51,5 +51,12 @@ public class MainApplication {
         //条件装配
         System.out.println(applicationContext.containsBean("pet222")); //true
         System.out.println(applicationContext.containsBean("pet666")); //false
+
+        //调用beans.xml中配置的bean
+        System.out.println(applicationContext.getBean("kitty")); //Pet{name='Kitty'}
+        System.out.println(applicationContext.getBean("ibbie")); //Master{name='Ibbie', pet=Pet{name='Kitty'}}
+
+        //通过配置文件注入属性
+        System.out.println(applicationContext.getBean("car")); //Car{brand='ABC', price=123456.78}
     }
 }
