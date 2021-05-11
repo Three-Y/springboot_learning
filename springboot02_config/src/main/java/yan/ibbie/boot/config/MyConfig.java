@@ -33,6 +33,7 @@ import yan.ibbie.boot.pojo.Pet;
  * @Conditional 条件装配，满足指定条件才配置组件
  * @ImportResource 导入其它配置文件，导入后可以直接调用导入的文件中的bean
  * @ConfigurationProperties 可从配置文件中注入bean的属性值（见Car.class）
+ * @EnableConfigurationProperties 在配置类中使用，与@ConfigurationProperties结合使用，可从配置文件中注入bean的属性值
  */
 @Import({DBHelper.class,Pet.class})
 @Configuration(proxyBeanMethods = true)
