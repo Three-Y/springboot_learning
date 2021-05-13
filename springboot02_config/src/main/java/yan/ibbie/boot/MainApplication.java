@@ -7,6 +7,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import yan.ibbie.boot.config.MyConfig;
 import yan.ibbie.boot.pojo.Master;
 import yan.ibbie.boot.pojo.Pet;
+import yan.ibbie.boot.pojo.User;
 
 @SpringBootApplication
 public class MainApplication {
@@ -58,5 +59,10 @@ public class MainApplication {
 
         //通过配置文件注入属性
         System.out.println(applicationContext.getBean("car")); //Car{brand='ABC', price=123456.78}
+
+        //yaml文件配置
+        User u = (User) applicationContext.getBean("user");
+        System.out.println(u);
+        System.out.println(u.getUsername());
     }
 }

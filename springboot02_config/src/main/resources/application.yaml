@@ -1,0 +1,29 @@
+#使用yaml配置
+user:
+  username: GK
+#  username: "ibbie \n yan" 双引号会转义，输出行换
+#  username: 'ibbie \n yan' 单引号不转义，原样输出
+  boss: true
+  birthday: 2021/05/13
+  age: 18
+  pet:
+    name: kitty
+#  interests: [吃饭,睡觉]
+  interests:
+    - 吃饭
+    - 睡觉
+  animals: [kitty,doge]
+#  score: {math:100,english:60}
+  score:
+    math: 100
+    englisht: 60
+  salaries:
+    - 10000.00
+    - 9999.99
+  all-pets:
+    cat:
+      - {name: kitty}
+      - {name: 肥猫}
+    dog:
+      - {name: 李白}
+      - {name: 四眼}
